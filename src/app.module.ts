@@ -7,7 +7,7 @@ import { Brand } from './brands/entities/brand.entity';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ 
+  imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -15,11 +15,13 @@ import { ConfigModule } from '@nestjs/config';
       port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
       database: process.env.DATABASE_NAME,
       username: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,      
-      entities: [Car,Brand],
+      password: process.env.DATABASE_PASSWORD,
+      entities: [Car, Brand],
       synchronize: true,
-    }),    
-    CarsModule, BrandsModule],
+    }),
+    CarsModule,
+    BrandsModule,
+  ],
   controllers: [],
   providers: [],
 })

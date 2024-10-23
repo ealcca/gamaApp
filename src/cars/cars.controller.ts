@@ -1,4 +1,13 @@
-import { Body, Controller,Delete,Get,Param,Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { QueryCarsDto } from './dto/query-cars.dto';
@@ -8,15 +17,14 @@ import { query } from 'express';
 
 @Controller('cars')
 export class CarsController {
-  
-  constructor(
-    private readonly carsService: CarsService){}
-  
+  constructor(private readonly carsService: CarsService) {}
+
   @Get()
   async findAll(
     @Query('model') model: string,
     @Query('year') year?: number,
-    @Query('color') color?: string){
+    @Query('color') color?: string,
+  ) {
     if (model) {
       if (year && color) {
         return this.carsService.findAllByModel(model, year, color);
@@ -43,7 +51,7 @@ export class CarsController {
   }
 
   @Post('')
-  create(@Body() createCarDto:CreateCarDto): Promise<Car> {
+  create(@Body() createCarDto: CreateCarDto): Promise<Car> {
     const newCar = this.carsService.create(createCarDto);
     return newCar;
   }

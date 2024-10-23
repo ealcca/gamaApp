@@ -1,3 +1,3 @@
 export class CreateBrandDto {
-    "trademark": string;
+  'trademark': string;
 }
