@@ -1,4 +1,5 @@
-import { Brand } from 'src/brands/entities/brand.entity';
+//import { Brand } from 'src/brands/entities/brand.entity';
+import { Brand } from '../../brands/entities/brand.entity';
 import {
   Column,
   Entity,
