@@ -17,11 +17,11 @@ describe('BrandsController', () => {
         imports: [
           TypeOrmModule.forRoot({
             type: 'postgres',
-            host: process.env.DB_HOST,
-            port: parseInt(process.env.DB_PORT),
-            username: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: `${process.env.DB_NAME}_test`, 
+            host: process.env.DATABASE_HOST,
+            port: parseInt(process.env.DATABASE_PORT),
+            username: process.env.DATABASE_USER,
+            password: process.env.DATABASE_PASSWORD,
+            database: process.env.DATABASE_NAME, 
             entities: [Car, Brand],
             synchronize: true,
           }),
@@ -36,10 +36,10 @@ describe('BrandsController', () => {
     it('should create a brand and return it with its id', async () => {
         expect(
             await controller.create({
-                trademark: 'tesla',
+                trademark: 'tesla_TeST',
             }),
         ).toEqual({
-            trademark: 'tesla',
+            trademark: 'tesla_TeST',
             id: expect.any(Number),
         });
     });

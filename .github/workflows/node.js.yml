@@ -10,11 +10,11 @@ on:
     branches: [ "master" ]
 
 env:
-  DB_NAME: my_db_test 
-  DB_PASSWORD: postgres
-  DB_HOST: localhost
-  DB_PORT: 5432
-  DB_USER: postgres
+  DATABASE_NAME: my_db_test 
+  DATABASE_PASSWORD: postgres
+  DATABASE_HOST: localhost
+  DATABASE_PORT: 5432
+  DATABASE_USER: postgres
 
 jobs:
   test:
@@ -26,8 +26,8 @@ jobs:
         ports: 
           - 5432:5432
         env:
-          POSTGRES_PASSWORD: ${{ env.DB_PASSWORD }}
-          POSTGRES_DB: ${{ env.DB_NAME }}
+          POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          POSTGRES_DB: ${{ env.DATABASE_NAME }}
 
     strategy:
       matrix:
