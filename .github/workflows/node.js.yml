@@ -9,10 +9,25 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  DATABASE_NAME: my_db_test 
+  DATABASE_PASSWORD: postgres
+  DATABASE_HOST: localhost
+  DATABASE_PORT: 5432
+  DATABASE_USER: postgres
+
 jobs:
   test:
-
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        ports: 
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          POSTGRES_DB: ${{ env.DATABASE_NAME }}
 
     strategy:
       matrix:
