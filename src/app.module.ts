@@ -17,7 +17,7 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       entities: [Car, Brand],
-      synchronize: true,
+      synchronize: process.env.DATABASE_SYNC==="true",
     }),
     CarsModule,
     BrandsModule,
